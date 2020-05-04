@@ -6,7 +6,7 @@ namespace LetItGrow
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Omar er flot");
+            Console.WriteLine("Hello World!");
         }
     }
 }
