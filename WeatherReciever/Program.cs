@@ -29,12 +29,7 @@ namespace WeatherReciever
 
                     string receiveData = Encoding.ASCII.GetString(receiveBytes);
 
-                    Console.WriteLine("Sender" + receiveData.ToString());
-
-                    Console.WriteLine("Denne besked blev sendt fra" +
-                        MyEndPoint.Address.ToString() +
-                        " on their port number " +
-                        MyEndPoint.Port.ToString());
+                    Console.WriteLine("Data:" + " " + receiveData.ToString());
 
                     Thread.Sleep(200);
                 }

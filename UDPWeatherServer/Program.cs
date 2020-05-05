@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using WeatherModel;
+using UDPWeatherBroadcaster;
 
 namespace UDPWeatherBroadcaster
 {
@@ -27,10 +27,9 @@ namespace UDPWeatherBroadcaster
 
             while (true)
             {
-                measure = new Measure(DateTime.Now, "Temperature", 12 , 9.12, "Rasp-v.1.0", "NA", "NA", System.Environment.MachineName);
+                measure = new Measure(DateTime.Now, "Baghaven", 12 ,12 ,12);
 
                 byte[] sendBytes = Encoding.ASCII.GetBytes(measure.ToString());
-
                 try
                 {
                     Console.WriteLine("sending :" + measure.ToString());
