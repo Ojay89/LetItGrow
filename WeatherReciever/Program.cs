@@ -16,11 +16,12 @@ namespace WeatherReciever
 {
     public class Program
     {
+       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Hello im waiting for data...");
             Console.ReadLine();
-
             UdpClient udpRecieveData = new UdpClient(11111);
 
             IPEndPoint MyEndPoint = new IPEndPoint(IPAddress.Any, 0);
@@ -38,22 +39,21 @@ namespace WeatherReciever
 
                    Console.WriteLine("Data:" + " " + receiveData.ToString());
                     //Parsedvalue and post
-                    
+
                     String[] subStrings = receiveData.Split(" | ", 10);
                     string dateTimeString = subStrings[1];
                     string location = subStrings[3];
                     string randomTemperatureString = subStrings[5];
                     string rainString = subStrings[7];
                     string windSpeedString = subStrings[9];
-                    
+
                     DateTime dateTime = DateTime.Parse(dateTimeString);
                     int randomTemperature = Int32.Parse(randomTemperatureString);
                     int rain = Int32.Parse(rainString);
                     int windSpeed = Int32.Parse(windSpeedString);
+                    Measurement newMeasurement = new Measurement { DeviceLocation = location, MeasureTime = dateTime, Rain = rain, RandomTemperature = randomTemperature, WindSpeed = windSpeed };
 
-
-
-                    PostMeasurementHttpTask();
+                    PostMeasurementHttpTask(newMeasurement);
 
                     Thread.Sleep(200);
                 }
@@ -65,14 +65,13 @@ namespace WeatherReciever
         }
 
 
-        public static async Task<string> PostMeasurementHttpTask()
+        public static async Task<string> PostMeasurementHttpTask(Measurement nm)
         {
             string ItemWebApiBase = "https://letitgrow.azurewebsites.net/";
-            Measurement newMeasurement = new Measurement{MeasureTime = DateTime.Now, DeviceLocation = "Baghaven", Rain = 10, RandomTemperature = 12, WindSpeed = 2};
 
-            using (HttpClient client = new HttpClient())
+           using (HttpClient client = new HttpClient())
             {
-                string newItemJson = JsonConvert.SerializeObject(newMeasurement);
+                string newItemJson = JsonConvert.SerializeObject(nm);
                 var content = new StringContent(newItemJson, Encoding.UTF8, ("application/json"));
                 client.BaseAddress = new Uri(ItemWebApiBase);
                 client.DefaultRequestHeaders.Clear();
@@ -89,7 +88,7 @@ namespace WeatherReciever
 
             Console.WriteLine("*****Get all items for verification*****");
             string ItemWebApi = "https://letitgrow.azurewebsites.net/";
-            return newMeasurement.ToString();
+            return nm.ToString();
         }
     }
 
