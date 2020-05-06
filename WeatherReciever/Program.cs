@@ -25,6 +25,7 @@ namespace WeatherReciever
             UdpClient udpRecieveData = new UdpClient(11111);
 
             IPEndPoint MyEndPoint = new IPEndPoint(IPAddress.Any, 0);
+            string itemWebAPI = "https://letitgrowweather.azurewebsites.net/api/items";
 
             Console.WriteLine("Its Blocked");
 
