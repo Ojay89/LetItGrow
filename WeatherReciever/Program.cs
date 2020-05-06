@@ -67,7 +67,7 @@ namespace WeatherReciever
 
         public static async Task<string> PostMeasurementHttpTask(Measurement nm)
         {
-            string ItemWebApiBase = "https://letitgrow.azurewebsites.net/";
+            string ItemWebApiBase = "https://letitgrowweather.azurewebsites.net/";
 
            using (HttpClient client = new HttpClient())
             {
@@ -87,7 +87,7 @@ namespace WeatherReciever
             }
 
             Console.WriteLine("*****Get all items for verification*****");
-            string ItemWebApi = "https://letitgrow.azurewebsites.net/";
+            string ItemWebApi = "https://letitgrowweather.azurewebsites.net/";
             return nm.ToString();
         }
     }
