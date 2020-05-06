@@ -36,18 +36,22 @@ namespace WeatherReciever
 
                     string receiveData = Encoding.ASCII.GetString(receiveBytes);
 
-                    Console.WriteLine("Data:" + " " + receiveData.ToString());
+                  //  Console.WriteLine("Data:" + " " + receiveData.ToString());
                     //Parsedvalue and post
-                    //PostMeasurementHttpTask().ToString().Split("|", 4);
-                    String[] subStrings = PostMeasurementHttpTask().ToString().Split("|", 5);
-                    string dateTime = subStrings[0];
+                    PostMeasurementHttpTask();
+                    String[] subStrings = receiveData.Split(" | ", 5);
+                    string dateTimeString = subStrings[0];
                     string location = subStrings[1];
-                    string randomTemperature = subStrings[2];
-                    string rain = subStrings[3];
-                    string windSpeed = subStrings[4];
+                    string randomTemperatureString = subStrings[2];
+                    string rainString = subStrings[3];
+                    string windSpeedString = subStrings[4];
+                    
+                    DateTime dateTime = DateTime.Parse(dateTimeString);
+                    int randomTemperature = Int32.Parse(randomTemperatureString);
+                    int rain = Int32.Parse(rainString);
+                    int windSpeed = Int32.Parse(windSpeedString);
 
-
-
+                    Console.WriteLine("DATA - date: " + dateTime + " | location: " + location + " | temperature in celcius: " + randomTemperature + " | precipitation in mm: " + rain+ " | windspeed: "+ windSpeed);
                     Thread.Sleep(200);
                 }
             }
@@ -61,7 +65,7 @@ namespace WeatherReciever
         public static async Task<string> PostMeasurementHttpTask()
         {
             string ItemWebApiBase = "https://letitgrow.azurewebsites.net/";
-            Measurement newMeasurement = new Measurement{DeviceLocation = "Baghaven", MeasureTime = DateTime.Now, Rain = 10, RandomTemperature = 12, WindSpeed = 2};
+            Measurement newMeasurement = new Measurement{MeasureTime = DateTime.Now, DeviceLocation = "Baghaven", Rain = 10, RandomTemperature = 12, WindSpeed = 2};
 
             using (HttpClient client = new HttpClient())
             {
