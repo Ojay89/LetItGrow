@@ -1,10 +1,7 @@
-﻿using System;
-using System.Runtime.InteropServices.WindowsRuntime;
-
-namespace LetItGrow
+﻿namespace LetItGrow
 {
     class LetItGrow
     {
-     
+
     }
 }
