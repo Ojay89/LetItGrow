@@ -36,22 +36,25 @@ namespace WeatherReciever
 
                     string receiveData = Encoding.ASCII.GetString(receiveBytes);
 
-                  //  Console.WriteLine("Data:" + " " + receiveData.ToString());
+                   Console.WriteLine("Data:" + " " + receiveData.ToString());
                     //Parsedvalue and post
-                    PostMeasurementHttpTask();
-                    String[] subStrings = receiveData.Split(" | ", 5);
-                    string dateTimeString = subStrings[0];
-                    string location = subStrings[1];
-                    string randomTemperatureString = subStrings[2];
-                    string rainString = subStrings[3];
-                    string windSpeedString = subStrings[4];
+                    
+                    String[] subStrings = receiveData.Split(" | ", 10);
+                    string dateTimeString = subStrings[1];
+                    string location = subStrings[3];
+                    string randomTemperatureString = subStrings[5];
+                    string rainString = subStrings[7];
+                    string windSpeedString = subStrings[9];
                     
                     DateTime dateTime = DateTime.Parse(dateTimeString);
                     int randomTemperature = Int32.Parse(randomTemperatureString);
                     int rain = Int32.Parse(rainString);
                     int windSpeed = Int32.Parse(windSpeedString);
 
-                    Console.WriteLine("DATA - date: " + dateTime + " | location: " + location + " | temperature in celcius: " + randomTemperature + " | precipitation in mm: " + rain+ " | windspeed: "+ windSpeed);
+
+
+                    PostMeasurementHttpTask();
+
                     Thread.Sleep(200);
                 }
             }
@@ -75,6 +78,7 @@ namespace WeatherReciever
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage response = await client.PostAsync("api/items", content);
+                
 
                 Console.WriteLine("*****An item posted to service*****");
                 Console.WriteLine("***** Response is" + response + "*****");

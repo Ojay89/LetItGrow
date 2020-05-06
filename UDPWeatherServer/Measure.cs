@@ -41,8 +41,9 @@ namespace UDPWeatherBroadcaster
      
         public override string ToString()
         {
-            return $"{MeasureTime} | {DeviceLocation} | {RandomTemperature} | {Rain} | {WindSpeed}";
-            // return "Dato og tid:" + " " +  MeasureTime + " | " + "Hvor:" + " " + DeviceLocation + " | " + "Temperatur:" + " " + RandomTemperature + "C" + " | " +
+            return $"DATE | {MeasureTime} | LOCATION | {DeviceLocation} | TEMPERATURE IN CELCIUS | {RandomTemperature} | RAIN IN MM | {Rain} | WINDSPEED IN M/S | {WindSpeed}";
+             
+            //return "Dato og tid:" + " " +  MeasureTime + " | " + "Hvor:" + " " + DeviceLocation + " | " + "Temperatur:" + " " + RandomTemperature + "C" + " | " +
             //      "Regn:" + " " + Rain + "mm" + " | " + "Vindhastighed:" + " " + WindSpeed + " m/sek "; /*+ " " + MeasurementValue + " " + SensorType + " " + DevicePort + " " + DeviceIp + " " + DeviceName;*/
         }
     }
