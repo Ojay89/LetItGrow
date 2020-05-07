@@ -71,8 +71,8 @@ namespace WeatherReciever
         public static async void PostMeasurementHttpTask(Measurement nm)
         {
             //Virker med denne hjemmeside, men ikke den hjemmeside vi selv har lavet i Azure til projektet
-            //letitgrowweather.azurewebsites.net/
-            string ItemWebApiBase = "https://restitemserviceitem.azurewebsites.net/";
+           
+            string ItemWebApiBase = "https://letitgrowweather.azurewebsites.net/";
 
             using HttpClient client = new HttpClient();
             {
@@ -81,7 +81,7 @@ namespace WeatherReciever
                 client.BaseAddress = new Uri(ItemWebApiBase);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = await client.PostAsync("api/items", content);
+                HttpResponseMessage response = await client.PostAsync("api/weather", content);
                 
 
                 Console.WriteLine("*****An item posted to service*****");
