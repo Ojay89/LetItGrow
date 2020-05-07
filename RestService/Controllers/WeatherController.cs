@@ -12,7 +12,7 @@ namespace RestService.Controllers
     [Route("api/weather")]
     [ApiController]
     public class WeatherController : ControllerBase
-    {
+    { //det virker!
         private static readonly List<Measure> WeatherList = new List<Measure>()
         {
           new Measure(DateTime.Now, "Location",1,2,3),
