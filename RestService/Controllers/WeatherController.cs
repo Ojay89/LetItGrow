@@ -35,6 +35,16 @@ namespace RestService.Controllers
             return WeatherList.Find(i => i.DeviceLocation.Equals(substring));
         }
 
+        // GET: api/Weather/5
+        [HttpGet]
+        [Route(("/Latest"))]
+        public Measure GetLatest()
+        {
+            return WeatherList.Last();
+        }
+
+
+
         // POST: api/Weather
         [HttpPost]
         public void Post([FromBody] Measure value)
