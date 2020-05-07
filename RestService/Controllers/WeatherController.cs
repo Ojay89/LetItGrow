@@ -5,33 +5,41 @@ using System.Threading.Tasks;
 using MeasurementLibrary;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UDPWeatherBroadcaster;
 
 namespace RestService.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/weather")]
     [ApiController]
     public class WeatherController : ControllerBase
-    { 
-        
+    {
+        private static readonly List<Measure> WeatherList = new List<Measure>()
+        {
+          new Measure(DateTime.Now, "Location",1,2,3),
+          new Measure(DateTime.Now, "location 2",2,3,4)
+        };
+
+
         // GET: api/Weather
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Measure> Get()
         {
-            return new string[] { };
+            return WeatherList;
         }
 
         // GET: api/Weather/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet]
+        [Route( ("location/{substring}"))]
+        public Measure Get(string substring)
         {
-            return "value";
+            return WeatherList.Find(i => i.DeviceLocation.Equals(substring));
         }
 
         // POST: api/Weather
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Measure value)
         {
-            value = new Measurement().ToString();
+            WeatherList.Add(value);
         }
 
         // PUT: api/Weather/5
