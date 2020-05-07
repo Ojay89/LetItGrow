@@ -68,11 +68,9 @@ namespace WeatherReciever
         }
 
 
-        public static async void PostMeasurementHttpTask(Measurement nm)
+        public static async Task<string> PostMeasurementHttpTask(Measurement nm)
         {
-            //Virker med denne hjemmeside, men ikke den hjemmeside vi selv har lavet i Azure til projektet
-           
-            string ItemWebApiBase = "https://letitgrowweather.azurewebsites.net/";
+           string ItemWebApiBase = "https://letitgrowweather.azurewebsites.net/";
 
             using HttpClient client = new HttpClient();
             {
@@ -89,6 +87,7 @@ namespace WeatherReciever
                 response.EnsureSuccessStatusCode();
                 var httpResponseBody = await response.Content.ReadAsStringAsync();
                 Debug.WriteLine(httpResponseBody);
+                return content.ToString();
             }
 
         }
