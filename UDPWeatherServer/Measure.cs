@@ -24,7 +24,7 @@ namespace UDPWeatherBroadcaster
             MeasureTime = measureTime;
             DeviceLocation = location;
             RandomTemperature = new Random().Next(17, 19);
-            Rain = new Random().Next(0, 1);
+            Rain = new Random().Next(0, 20);
             WindSpeed = new Random().Next(4, 8);
 
             //Bruges ikke af reciever
