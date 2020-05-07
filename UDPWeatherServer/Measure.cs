@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Net.Http;
 using System.Security.Cryptography;
+
 
 namespace UDPWeatherBroadcaster
 {
@@ -23,7 +25,7 @@ namespace UDPWeatherBroadcaster
         {
             MeasureTime = measureTime;
             DeviceLocation = location;
-            RandomTemperature = new Random().Next(17, 19);
+            RandomTemperature = new Random().Next(-5,25);
             Rain = RandomRain();
             WindSpeed = new Random().Next(4, 8);
 
