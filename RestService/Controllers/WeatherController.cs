@@ -37,7 +37,7 @@ namespace RestService.Controllers
 
         // GET: api/Weather/5
         [HttpGet]
-        [Route(("/Latest"))]
+        [Route("Latest")]
         public Measure GetLatest()
         {
             return WeatherList.Last();

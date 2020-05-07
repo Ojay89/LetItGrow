@@ -86,7 +86,7 @@ namespace WeatherReciever
                 Console.WriteLine("***** Response is" + response + "*****");
                 response.EnsureSuccessStatusCode();
                 var httpResponseBody = await response.Content.ReadAsStringAsync();
-                Debug.WriteLine(httpResponseBody);
+                Debug.WriteLine(httpResponseBody); 
                 
             }
 
