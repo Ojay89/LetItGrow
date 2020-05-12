@@ -16,7 +16,8 @@ namespace RestService.Controllers
     { //det virker!
         private static readonly List<Measure> WeatherList = new List<Measure>()
         {
-          new Measure(1, DateTime.Now, "Location",1,2,3),
+            new Measure(0, DateTime.Now, "Location 0",0,1,2),
+            new Measure(1, DateTime.Now, "Location 1",1,2,3),
           new Measure(2, DateTime.Now, "location 2",2,3,4)
         };
 
@@ -38,9 +39,13 @@ namespace RestService.Controllers
         
         // POST: api/Weather
         [HttpPost]
-        public void Post([FromBody] Measure value)
+        [Route("{id}")]
+        public void Post(int id,[FromBody] Measure value)
         {
-            WeatherList.Add(value);
+            if (WeatherList.Find(i => i.Id==id).Id !=id)
+            {
+                WeatherList.Add(value);
+            }
         }
 
         // PUT: api/Weather/5
