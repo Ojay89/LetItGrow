@@ -30,22 +30,12 @@ namespace RestService.Controllers
 
         // GET: api/Weather/5
         [HttpGet]
-        [Route( ("id/{id}"))]
+        [Route( ("{id}"))]
         public Measure Get(int id)
         {
             return WeatherList.Find(i => i.Id==id);
         }
-
-        // GET: api/Weather/5
-        [HttpGet]
-        [Route("Latest")]
-        public Measure GetLatest()
-        {
-            return WeatherList.Last();
-        }
-
-
-
+        
         // POST: api/Weather
         [HttpPost]
         public void Post([FromBody] Measure value)
