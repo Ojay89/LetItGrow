@@ -9,5 +9,6 @@ namespace MeasurementLibrary
         public int RandomTemperature { get; set; }
         public int Rain { get; set; }
         public int WindSpeed { get; set; }
+        public int Id { get; set; }
     }
 }
