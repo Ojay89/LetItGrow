@@ -16,8 +16,6 @@ namespace RestService.Controllers
     { //det virker!
         private static readonly List<Measure> WeatherList = new List<Measure>()
         {
-            new Measure(0, DateTime.Now, "Location 0",0,1,2),
-            new Measure(1, DateTime.Now, "Location 1",1,2,3),
           new Measure(2, DateTime.Now, "location 2",2,3,4)
         };
 

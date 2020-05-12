@@ -82,7 +82,7 @@ namespace WeatherReciever
                 client.BaseAddress = new Uri(ItemWebApiBase);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = await client.PostAsync("api/weather/"+id, content);
+                HttpResponseMessage response = await client.PutAsync("api/weather/"+id, content);
 
 
                 Console.WriteLine("*****An item posted to service*****");
