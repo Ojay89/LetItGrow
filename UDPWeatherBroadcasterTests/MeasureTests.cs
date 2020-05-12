@@ -9,35 +9,54 @@ namespace UDPWeatherBroadcaster.Tests
     [TestClass()]
     public class MeasureTests
     {
-        private Measure m = new Measure(1, 2020 - 05 - 12T07: 09:57.3415153 + 00:00, "TestLocation", 24, 12, 7);
+        private Measure m = new Measure(2, DateTime.MaxValue, "TestLocation", 24, 12, 7);
+        private Measure m2 = new Measure(2, DateTime.MaxValue, "TestLocation", 24, 12, 7);
 
         [TestMethod()]
-        public void MeasureTest()
+        public void NonRandomParameterTest()
         {
-            Assert.AreEqual(m.Id,1);
-            Assert.AreEqual(m.MeasureTime, DateTime.Now);
+            Assert.AreEqual(m.Id,2);
+            Assert.AreEqual(m.MeasureTime, DateTime.MaxValue);
             Assert.AreEqual(m.DeviceLocation, "TestLocation");
-            Assert.AreEqual(m.RandomTemperature,24);
-            Assert.AreEqual(m.Rain,12);
-            Assert.AreEqual(m.WindSpeed,7);
+
+            Assert.AreNotEqual(m.Id,1);
+            Assert.AreNotEqual(m.MeasureTime, DateTime.Now);
+            Assert.AreNotEqual(m.DeviceLocation, "LocationTest");
         }
 
         [TestMethod()]
-        public void RandomRainTest()
+        public void RandomParameterTest()
         {
-            Assert.Fail();
+            //Testing simply that we are within the range given for each random parameter.
+            Assert.AreNotEqual(m.RandomRain(),-1);
+            Assert.AreNotEqual(m.RandomRain(),21);
+
+            Assert.AreNotEqual(m.Rain,-1);
+            Assert.AreNotEqual(m.Rain,21);
+
+            Assert.AreNotEqual(m.WindSpeed, 3);
+            Assert.AreNotEqual(m.WindSpeed, 9);
+
+            Assert.AreNotEqual(m.RandomTemperature,-6);
+            Assert.AreNotEqual(m.RandomTemperature,26);
+
         }
 
+       
         [TestMethod()]
-        public void MeasureTest1()
+        public void DifferentObjectSameId()
         {
-            Assert.Fail();
+            Assert.AreEqual(m.Id,m2.Id);
+
+            Assert.AreNotSame(m.Id,m2.Id);
         }
 
         [TestMethod()]
         public void ToStringTest()
         {
-            Assert.Fail();
+            Assert.AreEqual(m.ToString(),
+                $"ID | {m.Id} | DATE | {m.MeasureTime} | LOCATION | {m.DeviceLocation} | TEMPERATURE IN CELCIUS | {m.RandomTemperature} | RAIN IN MM | {m.Rain} | WINDSPEED IN M/S | {m.WindSpeed}");
         }
+
     }
 }
