@@ -27,7 +27,7 @@ namespace UDPWeatherBroadcaster
 
             while (true)
             {
-                measure = new Measure(DateTime.Now, "Backyard", 12 ,12 ,12);
+                measure = new Measure(2, DateTime.Now, "Backyard", 12 ,12 ,12);
 
                 byte[] sendBytes = Encoding.ASCII.GetBytes(measure.ToString());
                 try

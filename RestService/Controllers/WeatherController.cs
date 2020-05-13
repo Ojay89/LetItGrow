@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MeasurementLibrary;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using UDPWeatherBroadcaster;
 
 namespace RestService.Controllers
@@ -15,8 +16,7 @@ namespace RestService.Controllers
     { //det virker!
         private static readonly List<Measure> WeatherList = new List<Measure>()
         {
-          new Measure(DateTime.Now, "Location",1,2,3),
-          new Measure(DateTime.Now, "location 2",2,3,4)
+          new Measure(2, DateTime.Now, "location 2",2,3,4)
         };
 
 
@@ -29,33 +29,37 @@ namespace RestService.Controllers
 
         // GET: api/Weather/5
         [HttpGet]
-        [Route( ("location/{substring}"))]
-        public Measure Get(string substring)
+        [Route( ("{id}"))]
+        public Measure Get(int id)
         {
-            return WeatherList.Find(i => i.DeviceLocation.Equals(substring));
+            return WeatherList.Find(i => i.Id==id);
         }
-
-        // GET: api/Weather/5
-        [HttpGet]
-        [Route("Latest")]
-        public Measure GetLatest()
-        {
-            return WeatherList.Last();
-        }
-
-
-
+        
         // POST: api/Weather
         [HttpPost]
-        public void Post([FromBody] Measure value)
+        [Route("{id}")]
+        public void Post(int id,[FromBody] Measure value)
         {
-            WeatherList.Add(value);
+            if (WeatherList.Find(i => i.Id==id).Id !=id)
+            {
+                WeatherList.Add(value);
+            }
         }
 
         // PUT: api/Weather/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        [Route("{id}")]
+        public void Put(int id,[FromBody] Measure value)
         {
+            Measure weather = Get(id);
+            if (weather != null)
+            {
+                weather.RandomTemperature = value.RandomTemperature;
+                weather.MeasureTime = value.MeasureTime;
+                weather.WindSpeed = value.WindSpeed;
+                weather.DeviceLocation = value.DeviceLocation;
+                weather.Rain = value.Rain;
+            }
         }
 
         // DELETE: api/ApiWithActions/5
