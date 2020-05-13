@@ -16,7 +16,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeasurementLibrary", "Measu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LetItGrowUITest", "LetItGrowUITest\LetItGrowUITest.csproj", "{0D4DD86E-205B-4037-93FC-8E86D5FBE6AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDPWeatherBroadcasterTests", "UDPWeatherBroadcasterTests\UDPWeatherBroadcasterTests.csproj", "{1E0C5F7C-02F0-4EE8-80C7-A8AA0DC68B06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UDPWeatherBroadcasterTests", "UDPWeatherBroadcasterTests\UDPWeatherBroadcasterTests.csproj", "{1E0C5F7C-02F0-4EE8-80C7-A8AA0DC68B06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InMemoryDB", "InMemoryDB\InMemoryDB.csproj", "{110DA433-11EF-43D9-9533-E71FFD3A3EC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +50,10 @@ Global
 		{1E0C5F7C-02F0-4EE8-80C7-A8AA0DC68B06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E0C5F7C-02F0-4EE8-80C7-A8AA0DC68B06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E0C5F7C-02F0-4EE8-80C7-A8AA0DC68B06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{110DA433-11EF-43D9-9533-E71FFD3A3EC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{110DA433-11EF-43D9-9533-E71FFD3A3EC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{110DA433-11EF-43D9-9533-E71FFD3A3EC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{110DA433-11EF-43D9-9533-E71FFD3A3EC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
