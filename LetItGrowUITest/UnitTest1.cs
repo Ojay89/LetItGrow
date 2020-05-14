@@ -7,7 +7,7 @@ using OpenQA.Selenium.Support.UI;
 namespace LetItGrowUITest
 {
     [TestClass]
-    public class UnitTest1
+    public class UiTest
     {
         private static readonly string DriverDirectory = "C:\\seleniumDrivers";
         private static IWebDriver _driver;
