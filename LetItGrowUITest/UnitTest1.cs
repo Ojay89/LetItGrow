@@ -21,24 +21,21 @@ namespace LetItGrowUITest
         [ClassCleanup]
         public static void TearDown()
         {
-            _driver.Dispose();
+            //_driver.Dispose();
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestGetAllButton()
         {
-            _driver.Navigate().GoToUrl("http://localhost:3002/"); //BEMÆRK 3002 ?!?!?!
-            string title = _driver.Title;
+            _driver.Navigate().GoToUrl("http://localhost:3000/"); 
+           
 
-            //IWebElement buttonElement = _driver.FindElement(By.Id("getAllPlantsButton"));
-            //buttonElement.Click();
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
 
-          
-
-            //WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20)); 
-            //IWebElement plantCard = wait.Until(d => d.FindElement(By.Id("plantDeck")));
-
-            //Assert.IsTrue(plantCard.Text.Contains("tietongue"));
+            IWebElement buttonElement = wait.Until(d => d.FindElement(By.Id("GetAllPlantsButton")));
+            buttonElement.Click();
+            IWebElement plantCard = wait.Until(d => d.FindElement(By.Id("plantDeck")));
+            Assert.IsTrue(plantCard.Text.Contains("southern red oak"));
         }
     }
 }
