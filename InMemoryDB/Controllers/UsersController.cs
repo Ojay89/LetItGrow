@@ -20,10 +20,19 @@ namespace InMemoryDB.Controllers
             _context = context;
             if (_context.InMemoryUsers.Count() == 0)
             {
-                _context.InMemoryUsers.Add(new User("kon", "pwd", "kon@kon.dk", new List<Plant>() { new Plant(1, "104800"), new Plant(2, "131981") }));
-                _context.InMemoryUsers.Add(new User("nik", "pwd", "nik@nik.dk", new List<Plant>() { new Plant(3, "136870"), new Plant(4, "168621") }));
-                _context.InMemoryUsers.Add(new User("dan", "pwd", "dan@dan.dk", new List<Plant>() { new Plant(5, "136870"), new Plant(6, "168621") }));
-                
+
+
+                _context.InMemoryUsers.Add(new User("kon", "pwd", "kon@kon.dk"));
+                _context.InMemoryUsers.Add(new User("nik", "pwd", "nik@nik.dk"));
+                _context.InMemoryUsers.Add(new User("dan", "pwd", "dan@dan.dk"));
+
+                _context.InMemoryPlants.Add(new Plant(1, "104800"));
+                _context.InMemoryPlants.Add(new Plant(1, "104800"));
+                _context.InMemoryPlants.Add(new Plant(1, "104800"));
+                _context.InMemoryPlants.Add(new Plant(2, "123456"));
+                _context.InMemoryPlants.Add(new Plant(2, "123456"));
+                _context.InMemoryPlants.Add(new Plant(2, "987654"));
+
                 _context.SaveChanges();
             }
         }
