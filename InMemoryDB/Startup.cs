@@ -29,6 +29,8 @@ namespace InMemoryDB
         {
             services.AddDbContext<UserContext>(opt =>
                 opt.UseInMemoryDatabase("UserList"));
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddControllers();
         }
 

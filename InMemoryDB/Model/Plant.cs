@@ -9,18 +9,20 @@ namespace InMemoryDB.Model
     public class Plant
     {
 
-       
+
         public Plant(int userId, string plantAPIid)
         {
             UserId = userId;
             PlantAPIid = plantAPIid;
-
+           
         }
 
 
-        
+
 
         public int UserId { get; set; }
+
+        public User user { get; set; }
 
         [Key]
         public int Id { get; set; }
