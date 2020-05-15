@@ -13,5 +13,6 @@ namespace InMemoryDB.Model
 
         }
         public DbSet<User> InMemoryUsers { get; set; }
+        public DbSet<Plant> InMemoryPlants { get; set; }
     }
 }

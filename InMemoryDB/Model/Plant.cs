@@ -14,6 +14,11 @@ namespace InMemoryDB.Model
             PlantAPIid = plantAPIid;
         }
 
+        public Plant()
+        {
+
+        }
+
         public int Id { get; set; }
         public string PlantAPIid { get; set; }
     }
