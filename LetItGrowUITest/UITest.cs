@@ -28,8 +28,6 @@ namespace LetItGrowUITest
         public void TestGetAllButton()
         {
             _driver.Navigate().GoToUrl("http://localhost:3000/"); 
-           
-
             WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
 
             IWebElement buttonElement = wait.Until(d => d.FindElement(By.Id("GetAllPlantsButton")));
@@ -38,18 +36,15 @@ namespace LetItGrowUITest
             Assert.IsTrue(plantCard.Text.Contains("southern red oak"));
         }
 
-        [TestMethod] //lav den når vi ikke har opbrugt vores azure guldbank
+        [TestMethod]
         public void TestWeatherInRealTime()
         {
-            //Har søgt efter location name, da det ikke vil virke hver gang, hvis jeg søger efter hvor varmt det er eller hvor meget regn der er.
             _driver.Navigate().GoToUrl("http://localhost:3000/");
             WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
             _driver.Manage().Window.Maximize();
 
             IWebElement weatherDataInRealTime = wait.Until(d => d.FindElement(By.Id("locationWeatherSensor")));
-
             Assert.IsTrue(weatherDataInRealTime.Text.Contains("location 2"));
-
         }
 
         [TestMethod]
@@ -89,8 +84,7 @@ namespace LetItGrowUITest
             loginButton.Click();
 
             IWebElement userPlantCard = wait.Until(d => d.FindElement(By.Id("plantDeck")));
-            Assert.IsTrue(userPlantCard.Text.Contains("glaucous bluegrass"));
-
+            Assert.IsTrue(userPlantCard.Text.Contains("marsh muhly"));
         }
     }
 }
